@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VXF-Ab-KwA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Yl-Rg-eLy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Messages List Table View Controller-->
         <scene sceneID="LDT-dK-jsg">
             <objects>
-                <tableViewController id="Xvu-cA-Abu" sceneMemberID="viewController">
+                <tableViewController id="Xvu-cA-Abu" customClass="MessagesListTableViewController" customModule="messages" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NOb-el-kb5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="93" id="ADh-R0-T8a">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="93" id="ADh-R0-T8a" customClass="MessagesTableViewCell" customModule="messages" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ADh-R0-T8a" id="wUy-ow-waP">
@@ -47,6 +48,9 @@
                                                     <rect key="frame" x="361" y="0.0" width="45" height="85"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="readButtonTapped:" destination="ADh-R0-T8a" eventType="touchUpInside" id="gFM-dR-3yd"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -58,6 +62,11 @@
                                         <constraint firstItem="N8x-eF-RSL" firstAttribute="top" secondItem="wUy-ow-waP" secondAttribute="top" constant="4" id="oFt-dY-t1L"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateTextLabel" destination="p2w-G9-rdw" id="0pg-FS-DA0"/>
+                                    <outlet property="markAsReadButton" destination="DYc-py-hDA" id="NuE-Tx-1a7"/>
+                                    <outlet property="messageTextLabel" destination="Tfz-1h-EHd" id="4On-Ch-py9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -66,17 +75,70 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="JeX-h1-Gfg">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="5VU-H6-h1K"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="5VU-H6-h1K">
+                            <connections>
+                                <action selector="addMessagesButtonTapped:" destination="Xvu-cA-Abu" id="xKm-5M-BvX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNi-ae-jpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="205"/>
+            <point key="canvasLocation" x="986" y="205"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Messages-->
+        <scene sceneID="YRd-Ko-hMx">
+            <objects>
+                <viewController id="4YV-qb-Gmd" customClass="MarkAllViewController" customModule="messages" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eri-Ys-gyX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-oW-vQX">
+                                <rect key="frame" x="132.5" y="413" width="149" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Marked All As Read"/>
+                                <connections>
+                                    <action selector="markedAllAsReadButtonTapped:" destination="4YV-qb-Gmd" eventType="touchUpInside" id="UZT-rt-C7h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rID-Hj-KLB"/>
+                        <color key="backgroundColor" red="1" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="S43-oW-vQX" firstAttribute="centerY" secondItem="rID-Hj-KLB" secondAttribute="centerY" id="S4z-mj-Pde"/>
+                            <constraint firstItem="S43-oW-vQX" firstAttribute="centerX" secondItem="rID-Hj-KLB" secondAttribute="centerX" id="TKp-mH-fnA"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Messages" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" selectedImage="rectangle.and.pencil.and.ellipsis.rtl" id="iX4-mz-mNo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNo-5u-uO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="205"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ELS-DP-gOI">
+            <objects>
+                <tabBarController id="2Yl-Rg-eLy" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qZD-BA-TVn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="VXF-Ab-KwA" kind="relationship" relationship="viewControllers" id="aDx-Ml-kI5"/>
+                        <segue destination="4YV-qb-Gmd" kind="relationship" relationship="viewControllers" id="cYP-h8-0ZY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iZG-e7-e6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="205"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="qRz-VL-BgC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VXF-Ab-KwA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="u6Z-Vd-IBC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3Z-XZ-uCH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -95,6 +157,7 @@
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -12,6 +12,12 @@
 		5F59195028E49AD200050C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F59194E28E49AD200050C1E /* Main.storyboard */; };
 		5F59195228E49AD300050C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F59195128E49AD300050C1E /* Assets.xcassets */; };
 		5F59195528E49AD300050C1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F59195328E49AD300050C1E /* LaunchScreen.storyboard */; };
+		5F59195D28E4A0C500050C1E /* MessagesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F59195C28E4A0C500050C1E /* MessagesListTableViewController.swift */; };
+		5F59195F28E4A16100050C1E /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F59195E28E4A16100050C1E /* MessagesTableViewCell.swift */; };
+		5F59196128E4A4F500050C1E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F59196028E4A4F400050C1E /* Message.swift */; };
+		5F59196328E4A88700050C1E /* Message Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F59196228E4A88700050C1E /* Message Controller.swift */; };
+		5F59196528E4B98F00050C1E /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F59196428E4B98F00050C1E /* DateFormatterExtension.swift */; };
+		5F9DC46428E60628000DA709 /* MarkAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DC46328E60628000DA709 /* MarkAllViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		5F59195128E49AD300050C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F59195428E49AD300050C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F59195628E49AD300050C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F59195C28E4A0C500050C1E /* MessagesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesListTableViewController.swift; sourceTree = "<group>"; };
+		5F59195E28E4A16100050C1E /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		5F59196028E4A4F400050C1E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5F59196228E4A88700050C1E /* Message Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message Controller.swift"; sourceTree = "<group>"; };
+		5F59196428E4B98F00050C1E /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		5F9DC46328E60628000DA709 /* MarkAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAllViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +68,42 @@
 			children = (
 				5F59194828E49AD200050C1E /* AppDelegate.swift */,
 				5F59194A28E49AD200050C1E /* SceneDelegate.swift */,
-				5F59194E28E49AD200050C1E /* Main.storyboard */,
+				5F59196628E4D02400050C1E /* Storyboards */,
 				5F59195128E49AD300050C1E /* Assets.xcassets */,
 				5F59195328E49AD300050C1E /* LaunchScreen.storyboard */,
 				5F59195628E49AD300050C1E /* Info.plist */,
+				5F59195C28E4A0C500050C1E /* MessagesListTableViewController.swift */,
+				5F59196828E4D0A600050C1E /* Custome View */,
+				5F59196728E4D03C00050C1E /* Model */,
+				5F59196228E4A88700050C1E /* Message Controller.swift */,
+				5F59196428E4B98F00050C1E /* DateFormatterExtension.swift */,
+				5F9DC46328E60628000DA709 /* MarkAllViewController.swift */,
 			);
 			path = messages;
+			sourceTree = "<group>";
+		};
+		5F59196628E4D02400050C1E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5F59194E28E49AD200050C1E /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5F59196728E4D03C00050C1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F59196028E4A4F400050C1E /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5F59196828E4D0A600050C1E /* Custome View */ = {
+			isa = PBXGroup;
+			children = (
+				5F59195E28E4A16100050C1E /* MessagesTableViewCell.swift */,
+			);
+			path = "Custome View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +178,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F59194928E49AD200050C1E /* AppDelegate.swift in Sources */,
+				5F9DC46428E60628000DA709 /* MarkAllViewController.swift in Sources */,
+				5F59195F28E4A16100050C1E /* MessagesTableViewCell.swift in Sources */,
+				5F59196528E4B98F00050C1E /* DateFormatterExtension.swift in Sources */,
+				5F59196128E4A4F500050C1E /* Message.swift in Sources */,
 				5F59194B28E49AD200050C1E /* SceneDelegate.swift in Sources */,
+				5F59196328E4A88700050C1E /* Message Controller.swift in Sources */,
+				5F59195D28E4A0C500050C1E /* MessagesListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
